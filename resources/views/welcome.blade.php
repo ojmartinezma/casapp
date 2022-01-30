@@ -30,7 +30,7 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" title="Contactenos">Contactenos</a>
+                        <a class="nav-link" href="#sidebarContacto" data-bs-toggle="offcanvas" role="button" title="Contactenos" aria-controls="sidebar">Contáctenos</a>
                     </li>
                 </ul>
                 <div class="d-flex usuario">
@@ -39,11 +39,18 @@
                             <li><a href="/login" class="nav-link"
                             role="button">{{ Auth::user()->name }}</a></li>
                         @else
-                        <li><a href="/login" class="nav-link"
+                        <!-- <li><a href="/login" class="nav-link"
                             role="button">Ingresar</a></li>
                         
                         <li><a href="/register" class="nav-link"
-                            role="button">Registrarse</a></li>
+                            role="button">Registrarse</a></li> -->
+                            <ul>
+                                <li><a href="#sidebarLogin" class="d-block mt-3" data-bs-toggle="offcanvas" 
+                                    role="button" aria-controls="sidebar">Ingresar</a></li>
+                                
+                                <li><a href="#sidebarRegister" class="d-block mt-3" data-bs-toggle="offcanvas"
+                                    role="button" aria-controls="sidebar">Registrarse</a></li>
+                            </ul>
                         @endif
                     </ul>
                     <img src="imagenes/usuario.png" />
@@ -86,13 +93,14 @@
         </div>
         <div class="offcanvas-body">
             <div id="login">
-                <form action="index.html" method="post">
+                <form method="POST" action="{{ route('login') }}">
+                @csrf
                     <h4 class="text-center mt-3">Iniciar sesion</h4>
                     <div class="mb-3 mt-3">
-                        <input type="text" class="form-control" id="user" placeholder="Nombre de Usuario" name="user">
+                        <input type="text" class="form-control" id="email" placeholder="Correo electrónico" name="email">
                     </div>
                     <div class="mb-3">
-                        <input type="password" class="form-control" id="pass" placeholder="Contrasena" name="pass">
+                        <input type="password" class="form-control" id="password" placeholder="Contraseña" name="password">
                     </div>
                     <div class="text-center mb-3">
                         <button type="submit" class="btn btn-primary">Ingresar</button>
@@ -111,16 +119,20 @@
         </div>
         <div class="offcanvas-body">
             <div id="register">
-                <form action="index.html" method="post">
+                <form method="POST" action="{{ route('register') }}">
+                @csrf
                     <h4 class="text-center mt-3">Registro</h4>
+                    <div class="mb-3 mt-3">
+                        <input type="text" class="form-control" id=name" placeholder="Nombre" name="name">
+                    </div>
                     <div class="mb-3 mt-3">
                         <input type="email" class="form-control" id="email" placeholder="Correo electronico" name="email">
                     </div>
                     <div class="mb-3">
-                        <input type="text" class="form-control" id="user" placeholder="Nombre de Usuario" name="user">
+                        <input type="password" class="form-control" id="password" placeholder="Contraseña" name="password">
                     </div>
                     <div class="mb-3">
-                        <input type="password" class="form-control" id="pass" placeholder="Contrasena" name="pass">
+                        <input type="password" class="form-control" id="password_confirmation" placeholder="Confirme Contrasena" name="password_confirmation">
                     </div>
                     <div class="text-center mb-3">
                         <button type="submit" class="btn btn-primary">Registrarse</button>
@@ -129,6 +141,56 @@
             </div>
         </div>
         
+    </div>
+        <!--offCanvas contacto-->
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="sidebarContacto"
+    aria-labelledby="sidebar-label">
+        <div class="offcanvas-header">
+            <h4 class="text-center mt-3">Contáctenos</h4>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div id="login">
+                <form action="index.html" method="post">
+                    <br>
+                    <div class="accordion" id="accordionPanelsStayOpenExample">
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                              General
+                            </button>
+                          </h2>
+                          <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                            <div class="accordion-body">
+                              <strong>MiCasaYa</strong>
+                              <br> 
+                              <p>Contacto@micasaya.com</p>
+                              <p><strong>Dirección:</strong>  Ac. 100 ##No 16-56, Bogotá</p>
+                              <p><strong>Teléfono:</strong> (1) 1501000</p>
+                              <p><strong>Fax:</strong> +420313414515</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                              Desarrolladores
+                            </button>
+                          </h2>
+                          <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+                            <div class="accordion-body">
+                              <p><strong>Diego Fernando Bello López</strong> <br> Dbello@unal.edu.co</p>
+                              <p><strong>Oscar Javier Martinez Martinez</strong> <br> Ojmartinezma@unal.edu.co</p>
+                              <p><strong>Santiago Alvarez Ricardo</strong> <br> Salvarezri@unal.edu.co</p>
+                              <p><strong>José Ignacio Suárez Montiel</strong> <br> Josuarezm@unal.edu.co</p>
+                              <p><strong>Diego Efraín Mojica Mendez</strong> <br> Dmojicam@unal.edu.co</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                </form>
+            </div>
+        </div>
     </div>
 
 
