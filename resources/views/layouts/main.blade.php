@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Vivienda, Compraventa">
-    <title>Inicio</title>
+    <title>{{ config('app.name', 'Laravel') }}</title>
     <link rel="icon" type="image/png" href="imagenes/icono.png" />
     <link href="estilos.css" rel="stylesheet" type="text/css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -58,11 +58,6 @@
             </div>
         </div>
     </nav>
-    
-    <!-- --------map--------------- -->
-    <!-- key: AIzaSyAYvLNR666y22LmyCPbGU8Ws1OuuXfdplY-->
-    <!-- email: proyecto.fincaraiz.ingesoft@gmail.com-->
-    <!-- pass: ingesoft2021-->
     <div class="container-fluid" id="map-container">
         <div id="map"></div>
     </div>
