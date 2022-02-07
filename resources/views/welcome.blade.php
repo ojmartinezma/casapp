@@ -59,10 +59,6 @@
         </div>
     </nav>
     
-    <!-- --------map--------------- -->
-    <!-- key: AIzaSyAYvLNR666y22LmyCPbGU8Ws1OuuXfdplY-->
-    <!-- email: proyecto.fincaraiz.ingesoft@gmail.com-->
-    <!-- pass: ingesoft2021-->
     <div class="container-fluid" id="map-container">
         <div id="map"></div>
     </div>
@@ -70,7 +66,7 @@
 
 
     <script async="false"
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYIQmh-CQAia85hUgAZGAlNF7ucsfYaHA&callback=initMap">
+    src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_API_KEY') }}&callback=initMap">
     </script>
 
 
