@@ -65,7 +65,7 @@
 
 
     <script async="false"
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYIQmh-CQAia85hUgAZGAlNF7ucsfYaHA&callback=initMap">
+    src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_API_KEY') }}&callback=initMap">
     </script>
 
 

@@ -21,6 +21,12 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+Route::get('/map','App\Http\Controllers\MapController@api')->name('map');
+Route::get('/map/filter','App\Http\Controllers\MapController@filter')->name('filter');
+Route::get('/map/detail/{id}','App\Http\Controllers\MapController@detail')->name('detail');
+
+
 Route::get('/create-offer', function () {
     return view('create-offer');
 })->name('create-offer');

@@ -80,8 +80,7 @@
 
 
     <!--offCanvas login-->
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="sidebarLogin"
-    aria-labelledby="sidebar-label">
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="sidebarLogin"    aria-labelledby="sidebar-label">
         <div class="offcanvas-header">
             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             <!-- -----close button (don´t works i don´t know why)--------
@@ -138,14 +137,14 @@
         </div>
         
     </div>
-        <!--offCanvas contacto-->
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="sidebarContacto"
-    aria-labelledby="sidebar-label">
-        <div class="offcanvas-header">
-            <h4 class="text-center mt-3">Contáctenos</h4>
-            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
+        offCanvas contacto
+        @component('components/offcanvas')
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="sidebarContacto"  aria-labelledby="sidebar-label">
+            <div class="offcanvas-header">
+                <h4 class="text-center mt-3">Contáctenos</h4>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+        
             <div id="login">
                 <form action="index.html" method="post">
                     <br>
@@ -187,7 +186,7 @@
                 </form>
             </div>
         </div>
-    </div>
+        @endcomponent
 
 
     <script src="acciones.js"></script>
