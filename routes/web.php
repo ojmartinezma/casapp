@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +25,21 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::get('/map','App\Http\Controllers\MapController@api')->name('map');
 Route::get('/map/filter','App\Http\Controllers\MapController@filter')->name('filter');
 Route::get('/map/detail/{id}','App\Http\Controllers\MapController@detail')->name('detail');
+
+
+Route::get('/create-offer', function () {
+    return view('create-offer');
+})->name('create-offer');
+
+Route::get('/edit-offer', function () {
+    return view('edit-offer');
+})->name('edit-offer');
+
+Route::post('create-offer',  'App\Http\Controllers\OfferController@create');
+Route::post('edit-offer',  'App\Http\Controllers\OfferController@edit');
+Route::post('modify-offer',  'App\Http\Controllers\OfferController@modify');
+
+Route::get('/modify-offer', function () {
+    $offer_id = session('offer_id');
+    return view('modify-offer');
+})->name('modify-offer');

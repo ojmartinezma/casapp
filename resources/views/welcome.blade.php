@@ -25,8 +25,8 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Gestion</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Crear publicacion</a></li>
-                            <li><a class="dropdown-item" href="#">Editar publicacion</a></li>
+                            <li><a class="dropdown-item" href="{{ route('create-offer') }}">Crear publicacion</a></li>
+                            <li><a class="dropdown-item" href="{{ route('edit-offer') }}">Editar publicacion</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
