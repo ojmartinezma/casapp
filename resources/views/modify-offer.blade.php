@@ -62,8 +62,24 @@
         $offer_id = session('offer_id');
 
         $estate = DB::connection('mysql2')->table('estates')->where('id', '=', $offer_id)->get();
+        $city;
+        $neighborhood;
+        $area;
+        $rooms;
+        $type;
+        $value;
+        $Features_id;
+        $Estates_id;
         if (!($estate->isEmpty())) {
             foreach ($estate as $estate) {
+                $city = $estate->city;
+                $neighborhood = $estate->neighborhood;
+                $area = $estate->area;
+                $rooms = $estate->rooms;
+                $type = $estate->type;
+                $value = $estate->value;
+                $Features_id = $estate->Features_id;
+                $Estates_id = $estate->id;
         ?>
                 <h1 class="titulo display-5 d-flex justify-content-start">Editar anuncio</h1>
 
@@ -77,130 +93,202 @@
 
                         <form action="{!! route('modify-offer')!!}" method="POST">
                             @csrf
-                            <div class="row">
+                            <div class="row" style="width:700px">
                                 <div class="col">
 
-
-
-
-                                    <label for="nombre" class="form-label">Nombre</label>
+                                    <label for="direccion" class="form-label">Dirección</label>
                                     <div class="fieldbox">
-                                        <!-- <span class="material-icons">mail</span> -->
-                                        <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Se vende apartamento en Bogotá..." value="{{ old('nombre')}}">
-                                        {!! $errors ->first('nombre', '<small style="color:red">:message</small><br>') !!}
-                                        <div id="nombreHelp" class="form-text">Ingresa el nombre tu anuncio. </div>
-                                    </div>
-                                    <br>
-                                    <label for="direccion" class="form-label">Direccion</label>
-                                    <div class="fieldbox">
-                                        <!-- <span class="material-icons">mail</span> -->
-                                        <input type="text" class="form-control" name="direccion" id="direccion" placeholder="carrera 43a..." value="<?php echo $estate->address ?>">
-                                        {!! $errors ->first('direccion', '<small style="color:red">:message</small><br>') !!}
-                                        <div id="nombreHelp" class="form-text">Ingresa la direccion de tu inmueble.</div>
+                                        <input type="text" class="form-control" name="dirección" id="dirección" placeholder="carrera 43a..." value="<?php echo $estate->address ?>">
+                                        {!! $errors ->first('dirección', '<small style="color:red">:message</small><br>') !!}
+                                        <div id="direcciónHelp" class="form-text">Ingresa la dirección de tu inmueble.</div>
                                     </div>
                                     <br>
 
-                                    <label for="area" class="form-label">Area</label>
+                                    <label for="localidad" class="form-label">Localidad</label>
                                     <div class="fieldbox">
-                                        <!-- <span class="material-icons">mail</span> -->
-                                        <input type="number" class="form-control" name="area" id="area" placeholder="70.00" value="<?php echo $estate->area ?>">
-                                        {!! $errors ->first('area', '<small style="color:red">:message</small><br>') !!}
-                                        <div id="nombreHelp" class="form-text">Ingresa el area en metros cuadrados.</div>
+                                        <input type="text" class="form-control" name="localidad" id="localidad" placeholder="Teusaquillo" value="<?php echo $estate->loc ?>">
+                                        {!! $errors ->first('localidad', '<small style="color:red">:message</small><br>') !!}
+                                        <div id="localidadHelp" class="form-text">Ingresa la localidad.</div>
                                     </div>
-                                    <br>
-
-                                    <label for="barrio" class="form-label">Barrio</label>
-                                    <div class="fieldbox">
-                                        <!-- <span class="material-icons">account_circle</span> -->
-                                        <input type="text" class="form-control" name="barrio" id="barrio" placeholder="San Antonio" value="<?php echo $estate->neighborhood ?>">
-                                        {!! $errors ->first('barrio', '<small style="color:red">:message</small><br>') !!}
-                                        <div id="nombreHelp" class="form-text">Ingresa el barrio</div>
-                                    </div>
-
                                     <br>
 
                                     <label for="estrato" class="form-label">Estrato</label>
                                     <div class="fieldbox">
-                                        <!-- <span class="material-icons">account_circle</span> -->
                                         <input type="number" class="form-control" name="estrato" id="estrato" placeholder="3" value="<?php echo $estate->estr ?>">
                                         {!! $errors ->first('estrato', '<small style="color:red">:message</small><br>') !!}
-                                        <div id="nombreHelp" class="form-text">Ingresa el estrato</div>
+                                        <div id="estratoHelp" class="form-text">Ingresa el estrato.</div>
                                     </div>
 
                                     <br>
+
+                                    <label for="pisos" class="form-label">Pisos</label>
+                                    <div class="fieldbox">
+                                        <input type="number" class="form-control" name="pisos" id="pisos" placeholder="2" value="<?php echo $estate->floors ?>">
+                                        {!! $errors ->first('pisos', '<small style="color:red">:message</small><br>') !!}
+                                        <div id="pisosHelp" class="form-text">Ingresa el número de pisos.</div>
+                                    </div>
+
+                                    <br>
+
+                                    <label for="baños" class="form-label">Baños</label>
+                                    <div class="fieldbox">
+                                        <input type="number" class="form-control" name="baños" id="baños" placeholder="1" value="<?php echo $estate->toilets ?>">
+                                        {!! $errors ->first('baños', '<small style="color:red">:message</small><br>') !!}
+                                        <div id="bañosHelp" class="form-text">Ingresa el número de baños.</div>
+                                    </div>
+
+                                    <br>
+
+                                    <label for="parqueadero" class="form-label">Parqueadero</label>
+                                    <select name="parqueadero" id="parqueadero" class="form-select" aria-label="Default select example" value="<?php echo $estate->parking ?>">
+                                        {!! $errors ->first('parqueadero', '<small style="color:red">:message</small><br>') !!}
+                                        <option value="0" <?php if ($estate->parking == 0) { ?>selected<?php } ?>>No</option>
+                                        <option value="1" <?php if ($estate->parking == 1) { ?>selected<?php } ?>>Si</option>
+                                    </select>
+                                    <div id="parqueaderoHelp" class="form-text">Ingresa si el inmueble tiene o no parqueadero.</div>
+                                    <br>
+                                    <?php
+                                }
+                                $features = DB::connection('mysql2')->table('features')->where('id', '=', $Features_id)->get();
+                                if (!($features->isEmpty())) {
+                                    foreach ($features as $feature) {
+                                    ?>
+                                        <label for="sótano" class="form-label">Sótano</label>
+                                        <select name="sótano" id="sótano" class="form-select" aria-label="Default select example" value="<?php echo $feature->basement ?>">
+                                            {!! $errors ->first('sótano', '<small style="color:red">:message</small><br>') !!}
+                                            <option value="0" <?php if ($feature->basement == 0) { ?>selected<?php } ?>>No</option>
+                                            <option value="1" <?php if ($feature->basement == 1) { ?>selected<?php } ?>>Si</option>
+                                        </select>
+                                        <div id="sótanoHelp" class="form-text">Ingresa si el inmueble tiene o no sótano.</div>
+                                        <br>
+
+                                        <label for="seguridad" class="form-label">Seguridad</label>
+                                        <select name="seguridad" id="sótano" class="form-select" aria-label="Default select example" value="<?php echo $feature->security ?>">
+                                            {!! $errors ->first('seguridad', '<small style="color:red">:message</small><br>') !!}
+                                            <option value="0" <?php if ($feature->security == 0) { ?>selected<?php } ?>>No</option>
+                                            <option value="1" <?php if ($feature->security == 1) { ?>selected<?php } ?>>Si</option>
+                                        </select>
+                                        <div id="seguridadHelp" class="form-text">Ingresa si el inmueble tiene o no seguridad.</div>
+                                        <br>
 
                                 </div>
                                 <div class="col">
 
+                                    <label for="ciudad" class="form-label">Ciudad</label>
+                                    <div class="fieldbox">
+                                        <input type="text" class="form-control" name="ciudad" id="ciudad" placeholder="Bogotá" value="<?php echo $city ?>">
+                                        {!! $errors ->first('ciudad', '<small style="color:red">:message</small><br>') !!}
+                                        <div id="ciudadHelp" class="form-text">Ingresa la ciudad.</div>
+                                    </div>
+
+                                    <br>
+
+                                    <label for="barrio" class="form-label">Barrio</label>
+                                    <div class="fieldbox">
+                                        <input type="text" class="form-control" name="barrio" id="barrio" placeholder="San Antonio" value="<?php echo $neighborhood ?>">
+                                        {!! $errors ->first('barrio', '<small style="color:red">:message</small><br>') !!}
+                                        <div id="barrioHelp" class="form-text">Ingresa el barrio.</div>
+                                    </div>
+                                    <br>
+
+                                    <label for="área" class="form-label">Área</label>
+                                    <div class="fieldbox">
+                                        <input type="number" class="form-control" name="área" id="área" placeholder="70" value="<?php echo $area ?>">
+                                        {!! $errors ->first('área', '<small style="color:red">:message</small><br>') !!}
+                                        <div id="áreaHelp" class="form-text">Ingresa el área en metros cuadrados.</div>
+                                    </div>
+
+                                    <br>
 
                                     <label for="habitaciones" class="form-label">Habitaciones</label>
                                     <div class="fieldbox">
-                                        <!-- <span class="material-icons">phone</span> -->
-                                        <input type="number" class="form-control" name="habitaciones" id="habitaciones" placeholder="3" value="<?php echo $estate->rooms ?>">
+                                        <input type="number" class="form-control" name="habitaciones" id="habitaciones" placeholder="3" value="<?php echo $rooms ?>">
                                         {!! $errors ->first('habitaciones', '<small style="color:red">:message</small><br>') !!}
-                                        <div id="nombreHelp" class="form-text">Ingresa el numero de habitaciones</div>
+                                        <div id="habitacionesHelp" class="form-text">Ingresa el número de habitaciones.</div>
                                     </div>
 
                                     <br>
+                                    <label for="tipo" class="form-label">Tipo</label>
 
-
-                                    <label for="banos" class="form-label">Baños</label>
-                                    <div class="fieldbox">
-                                        <!-- <span class="material-icons">account_circle</span> -->
-                                        <input type="number" class="form-control" name="baños" id="baños" placeholder="Ingrese el numero de baños" value="<?php echo $estate->toilets ?>">
-                                        {!! $errors ->first('baños', '<small style="color:red">:message</small><br>') !!}
-                                        <div id="nombreHelp" class="form-text">Ingresa el numero de baños</div>
-                                    </div>
-
+                                    <select name="tipo" id="tipo" class="form-select" aria-label="Default select example" value="<?php echo $type ?>">
+                                        {!! $errors ->first('tipo', '<small style="color:red">:message</small><br>') !!}
+                                        <option value="0" <?php if ($type == 0) { ?>selected<?php } ?>>Casa</option>
+                                        <option value="1" <?php if ($type == 1) { ?>selected<?php } ?>>Apartamento</option>
+                                    </select>
+                                    <div id="tipoHelp" class="form-text">Ingresa si el inmueble es casa o apartamento.</div>
                                     <br>
 
-
-                                    <label for="garajes" class="form-label">Garajes</label>
-                                    <div class="fieldbox">
-                                        <!-- <span class="material-icons">account_circle</span> -->
-                                        <input type="number" class="form-control" name="garajes" id="garajes" placeholder="0" value="<?php echo $estate->parking ?>">
-                                        {!! $errors ->first('garajes', '<small style="color:red">:message</small><br>') !!}
-                                        <div id="nombreHelp" class="form-text">Ingresa el numero de garajes</div>
-                                    </div>
-
+                                    <label for="amueblado" class="form-label">Amueblado</label>
+                                    <select name="amueblado" id="amueblado" class="form-select" aria-label="Default select example" value="<?php echo $feature->furnished ?>">
+                                        {!! $errors ->first('amueblado', '<small style="color:red">:message</small><br>') !!}
+                                        <option value="0" <?php if ($feature->furnished == 0) { ?>selected<?php } ?>>No</option>
+                                        <option value="1" <?php if ($feature->furnished == 1) { ?>selected<?php } ?>>Si</option>
+                                    </select>
+                                    <div id="amuebladoHelp" class="form-text">Ingresa si el inmueble está o no amueblado.</div>
                                     <br>
 
+                                    <label for="terraza" class="form-label">Terraza</label>
+                                    <select name="terraza" id="terraza" class="form-select" aria-label="Default select example" value="<?php echo $feature->terrace ?>">
+                                        {!! $errors ->first('terraza', '<small style="color:red">:message</small><br>') !!}
+                                        <option value="0" <?php if ($feature->terrace == 0) { ?>selected<?php } ?>>No</option>
+                                        <option value="1" <?php if ($feature->terrace == 1) { ?>selected<?php } ?>>Si</option>
+                                    </select>
+                                    <div id="terrazaHelp" class="form-text">Ingresa si el inmueble tiene o no terraza.</div>
+                                    <br>
 
-                                    <label for="precio" class="form-label">Precio</label>
-                                    <div class="fieldbox input-group mb-2">
+                                    <label for="valor" class="form-label">Valor</label>
+                                    <div class="fieldbox input-group">
                                         <span class="input-group-text">$</span>
-                                        <input type="number" class="form-control" name="precio" id="precio" placeholder="1.800.000" value="<?php echo $estate->value ?>">
-                                        {!! $errors ->first('precio', '<small style="color:red">:message</small><br>') !!}
+                                        <input type="number" class="form-control" name="valor" id="valor" placeholder="1.800.000" value="<?php echo $value ?>">
                                     </div>
-                                    <div id="nombreHelp" class="form-text">Ingresa el precio, si el contrato es de arriendo, ingrese la renta mensual.</div>
+                                    {!! $errors ->first('valor', '<small style="color:red">:message</small><br>') !!}
+                                    <div id="valorHelp" class="form-text">Ingresa el valor de tu inmueble.</div>
+
+                                    <br>
+
                                 </div>
-                                <br>
+
                             </div>
-                            <label for="tipo" class="form-label">Tipo</label>
+                        <?php
+                                    }
+                                }
+                                $images = DB::connection('mysql2')->table('images')->where('Estates_id', '=', $Estates_id)->get();
+                                if (!($images->isEmpty())) {
+                                    $fotos = array();
+                                    $i = 1;
+                                    foreach ($images as $image) {
+                                        array_push($fotos, $image->source);
+                                    }
 
-                            <select name="tipo" id="tipo" class="form-select" aria-label="Default select example" value="<?php echo $estate->type ?>">
-                                {!! $errors ->first('tipo', '<small style="color:red">:message</small><br>') !!}
-                                <option value="1" <?php if ($estate->type == 1) { ?>selected<?php } ?>>Arriendo</option>
-                                <option value="2" <?php if ($estate->type == 2) { ?>selected<?php } ?>>Venta</option>
-                            </select>
-
-
-
-                            <br>
-
-                            <div class="col-7">
-
-
-                                <label for="foto" class="form-label">Foto</label>
-                                <div class="fieldbox">
-                                    <!-- <span class="material-icons">account_circle</span> -->
-                                    <input type="file" class="form-control" name="foto" id="foto" size="48" maxlength="25" placeholder="Ingrese una foto" value="{{ old('foto')}}">
-                                    {!! $errors ->first('foto', '<small style="color:red">:message</small><br>') !!}
-                                </div>
+                        ?>
+                        <div class="row">
+                            <label for="fotos" class="form-label">Fotos</label>
+                            <div class="fieldbox">
+                                <input type="text" class="form-control" name="foto1" id="foto1" placeholder="URL 1" value="<?php echo $fotos[0] ?>">
+                                {!! $errors ->first('foto1', '<small style="color:red">:message</small><br>') !!}
+                                <div id="foto1Help" class="form-text">Ingresa la URL de la primera foto.</div>
+                                <img src="<?php echo $fotos[0] ?>" width="100px">
                             </div>
                             <br>
-                            <button class="btn btn-primary boton" type="submit" id="actualizar" role="button">Actualizar</button>
-                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalDeleteOffer">Eliminar</button>
+                            <div class="fieldbox mt-3">
+                                <input type="text" class="form-control" name="foto2" id="foto2" placeholder="URL 2" value="<?php echo $fotos[1] ?>">
+                                {!! $errors ->first('foto2', '<small style="color:red">:message</small><br>') !!}
+                                <div id="foto2Help" class="form-text">Ingresa la URL de la segunda foto.</div>
+                                <img src="<?php echo $fotos[1] ?>" width="100px">                            </div>
+                            <br>
+                            <div class="fieldbox mt-3">
+                                <input type="text" class="form-control" name="foto3" id="foto3" placeholder="URL 3" value="<?php echo $fotos[2] ?>">
+                                {!! $errors ->first('foto3', '<small style="color:red">:message</small><br>') !!}
+                                <div id="foto3Help" class="form-text">Ingresa la URL de la tercera foto.</div>
+                                <img src="<?php echo $fotos[2] ?>" width="100px">                            </div>
+                            <br>
+                        </div>
+                    <?php
+                                }
+                    ?>
+                    <br>
+                    <button class="btn btn-primary boton" type="submit" id="actualizar" role="button">Actualizar</button>
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalDeleteOffer">Eliminar</button>
                         </form>
 
                     </div>
@@ -210,15 +298,14 @@
                 </div>
 
             <?php
-            }
         } else {
             ?>
-            <div class="alert alert-danger" role="alert">
-                Esta oferta no existe, puede crear una en <a href="{{ route('create-offer') }}" class="alert-link">Crear publicacion</a>.
-            </div>
-        <?php
+                <div class="alert alert-danger" role="alert">
+                    Esta oferta no existe, puede crear una en <a href="{{ route('create-offer') }}" class="alert-link">Crear publicacion</a>.
+                </div>
+            <?php
         }
-        ?>
+            ?>
     </div>
 
     <!--modal delete offer-->
@@ -255,7 +342,8 @@
         </div>
         <div class="offcanvas-body">
             <div id="register">
-                <form action="index.html" method="post">
+                <form action="#" method="post">
+                @csrf
                     <h4 class="text mt-3">Información básica</h4>
                     <div class="container">
                         <!--name-->
