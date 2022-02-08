@@ -68,6 +68,8 @@
         $rooms;
         $type;
         $value;
+        $latitude;
+        $longitude;
         $Features_id;
         $Estates_id;
         if (!($estate->isEmpty())) {
@@ -78,6 +80,8 @@
                 $rooms = $estate->rooms;
                 $type = $estate->type;
                 $value = $estate->value;
+                $latitude = $estate->latitude;
+                $longitude = $estate->longitude;
                 $Features_id = $estate->Features_id;
                 $Estates_id = $estate->id;
         ?>
@@ -248,7 +252,6 @@
 
                                 </div>
 
-                            </div>
                         <?php
                                     }
                                 }
@@ -261,7 +264,6 @@
                                     }
 
                         ?>
-                        <div class="row">
                             <label for="fotos" class="form-label">Fotos</label>
                             <div class="fieldbox">
                                 <input type="text" class="form-control" name="foto1" id="foto1" placeholder="URL 1" value="<?php echo $fotos[0] ?>">
@@ -276,12 +278,36 @@
                                 <div id="foto2Help" class="form-text">Ingresa la URL de la segunda foto.</div>
                                 <img src="<?php echo $fotos[1] ?>" width="100px">                            </div>
                             <br>
-                            <div class="fieldbox mt-3">
+                            <div class="fieldbox mt-3 mb-3">
                                 <input type="text" class="form-control" name="foto3" id="foto3" placeholder="URL 3" value="<?php echo $fotos[2] ?>">
                                 {!! $errors ->first('foto3', '<small style="color:red">:message</small><br>') !!}
                                 <div id="foto3Help" class="form-text">Ingresa la URL de la tercera foto.</div>
                                 <img src="<?php echo $fotos[2] ?>" width="100px">                            </div>
                             <br>
+                            <label for="coordenadas" class="form-label">Coordenadas</label>
+                        <br>
+                        <i>
+                            Por favor, ingresa la latitud y longitud donde está ubicado tu inmueble, para mostrarlo en el mapa interactivo.
+                            Puedes consultarlos en el siguiente <a href="https://www.latlong.net/convert-address-to-lat-long.html" target="_blank">link</a>.
+                        </i>
+                        <br>
+                        <div class="col">
+                            <label for="latitud" class="form-label mt-3">Latitud</label>
+                            <div class="fieldbox">
+                                <input type="text" class="form-control" name="latitud" id="latitud" placeholder="4.680880" value="<?php echo $latitude ?>">
+                                {!! $errors ->first('latitud', '<small style="color:red">:message</small><br>') !!}
+                                <div id="latitudHelp" class="form-text">Ingresa la latitud donde está ubicado tu inmueble.</div>
+                            </div>
+                            <br>
+                        </div>
+                        <div class="col">
+                            <label for="longitud" class="form-label mt-3">Longitud</label>
+                            <div class="fieldbox">
+                                <input type="text" class="form-control" name="longitud" id="longitud" placeholder="-74.114110" value="<?php echo $longitude ?>">
+                                {!! $errors ->first('longitud', '<small style="color:red">:message</small><br>') !!}
+                                <div id="longitudHelp" class="form-text">Ingresa la longitud donde está ubicado tu inmueble.</div>
+                            </div>
+                        </div>
                         </div>
                     <?php
                                 }
