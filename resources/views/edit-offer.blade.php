@@ -65,6 +65,8 @@
                 <thead>
                     <tr>
                         <th>Dirección</th>
+                        <th>Ciudad</th>
+                        <th>Localidad</th>
                         <th>Barrio</th>
                         <th>Acción</th>
                     </tr>
@@ -76,6 +78,8 @@
                     ?>
                         <tr>
                             <td><?php echo $estate->address ?></td>
+                            <td><?php echo $estate->city ?></td>
+                            <td><?php echo $estate->loc ?></td>
                             <td><?php echo $estate->neighborhood ?></td>
                             <td>
                                 <form action="{!! route('edit-offer')!!}" method="POST">
@@ -109,7 +113,8 @@
         </div>
         <div class="offcanvas-body">
             <div id="register">
-                <form action="index.html" method="post">
+                <form action="#" method="post">
+                @csrf
                     <h4 class="text mt-3">Información básica</h4>
                     <div class="container">
                         <!--name-->
