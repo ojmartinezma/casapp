@@ -7,9 +7,6 @@
     <link rel="icon" href="../imagenes/icono.png" />
     <link rel="stylesheet" type="text/css" href="../estilos.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
-
-
     <title>Crear oferta</title>
 </head>
 
@@ -65,7 +62,7 @@
         <br>
 
 
-        <div class="col-12 d-flex justify-content-center ">
+        <div class="col-12 d-flex justify-content-center">
 
             <div class="content">
 
@@ -75,7 +72,7 @@
                     <div class="row" style="width:700px">
                         <div class="col">
 
-                            <label for="direccion" class="form-label">Dirección</label>
+                            <label for="dirección" class="form-label">Dirección</label>
                             <div class="fieldbox">
                                 <input type="text" class="form-control" name="dirección" id="dirección" placeholder="Avenida Calle 53" value="{{ old('dirección')}}">
                                 {!! $errors ->first('dirección', '<small style="color:red">:message</small><br>') !!}
@@ -213,7 +210,7 @@
                             <label for="valor" class="form-label">Valor</label>
                             <div class="fieldbox input-group">
                                 <span class="input-group-text">$</span>
-                                <input type="number" class="form-control" name="valor" id="valor" placeholder="1.800.000" value="{{ old('valor')}}"> 
+                                <input type="number" class="form-control" name="valor" id="valor" placeholder="1.800.000" value="{{ old('valor')}}">
                             </div>
                             {!! $errors ->first('valor', '<small style="color:red">:message</small><br>') !!}
                             <div id="valorHelp" class="form-text">Ingresa el valor de tu inmueble.</div>
@@ -221,47 +218,65 @@
                             <br>
 
                         </div>
-
-                    </div>
-
-
-                    <div class="row">
-
-                    <label for="fotos" class="form-label">Fotos</label>
+                        <label for="fotos" class="form-label">Fotos</label>
+                        <div class="fieldbox">
+                            <input type="text" class="form-control" name="foto1" id="foto1" placeholder="URL 1" value="{{ old('foto1')}}">
+                            {!! $errors ->first('foto1', '<small style="color:red">:message</small><br>') !!}
+                            <div id="foto1Help" class="form-text">Ingresa la URL de la primera foto.</div>
+                        </div>
+                        <br>
+                        <div class="fieldbox mt-3">
+                            <input type="text" class="form-control" name="foto2" id="foto2" placeholder="URL 2" value="{{ old('foto2')}}">
+                            {!! $errors ->first('foto2', '<small style="color:red">:message</small><br>') !!}
+                            <div id="foto2Help" class="form-text">Ingresa la URL de la segunda foto.</div>
+                        </div>
+                        <br>
+                        <div class="fieldbox mt-3 mb-3">
+                            <input type="text" class="form-control" name="foto3" id="foto3" placeholder="URL 3" value="{{ old('foto3')}}">
+                            {!! $errors ->first('foto3', '<small style="color:red">:message</small><br>') !!}
+                            <div id="foto3Help" class="form-text">Ingresa la URL de la tercera foto.</div>
+                        </div>
+                        <br>
+                        <label for="coordenadas" class="form-label">Coordenadas</label>
+                        <br>
+                        <i>
+                            Por favor, ingresa la latitud y longitud donde está ubicado tu inmueble, para mostrarlo en el mapa interactivo.
+                            Puedes consultarlos en el siguiente <a href="https://www.latlong.net/convert-address-to-lat-long.html" target="_blank">link</a>.
+                        </i>
+                        <br>
+                        <div class="col">
+                            <label for="latitud" class="form-label mt-3">Latitud</label>
                             <div class="fieldbox">
-                                <input type="text" class="form-control" name="foto1" id="foto1" placeholder="URL 1" value="{{ old('foto1')}}">
-                                {!! $errors ->first('foto1', '<small style="color:red">:message</small><br>') !!}
-                                <div id="foto1Help" class="form-text">Ingresa la URL de la primera foto.</div>
+                                <input type="text" class="form-control" name="latitud" id="latitud" placeholder="4.680880" value="{{ old('latitud')}}">
+                                {!! $errors ->first('latitud', '<small style="color:red">:message</small><br>') !!}
+                                <div id="latitudHelp" class="form-text">Ingresa la latitud donde está ubicado tu inmueble.</div>
                             </div>
                             <br>
-                            <div class="fieldbox mt-3">
-                                <input type="text" class="form-control" name="foto2" id="foto2" placeholder="URL 2" value="{{ old('foto2')}}">
-                                {!! $errors ->first('foto2', '<small style="color:red">:message</small><br>') !!}
-                                <div id="foto2Help" class="form-text">Ingresa la URL de la segunda foto.</div>
+                        </div>
+                        <div class="col">
+                            <label for="longitud" class="form-label mt-3">Longitud</label>
+                            <div class="fieldbox">
+                                <input type="text" class="form-control" name="longitud" id="longitud" placeholder="-74.114110" value="{{ old('longitud')}}">
+                                {!! $errors ->first('longitud', '<small style="color:red">:message</small><br>') !!}
+                                <div id="longitudHelp" class="form-text">Ingresa la longitud donde está ubicado tu inmueble.</div>
                             </div>
-                            <br>
-                            <div class="fieldbox mt-3">
-                                <input type="text" class="form-control" name="foto3" id="foto3" placeholder="URL 3" value="{{ old('foto3')}}">
-                                {!! $errors ->first('foto3', '<small style="color:red">:message</small><br>') !!}
-                                <div id="foto3Help" class="form-text">Ingresa la URL de la tercera foto.</div>
-                            </div>
-                            <br>
+                        </div>
                     </div>
-
                     <br>
-
                     <button class="btn btn-primary boton" type="submit" id="publicar" role="button">Publicar</button>
-
-                </form>
-
             </div>
 
+
+
+            </form>
         </div>
 
+    </div>
 
 
-        <br>
-        <br>
+
+    <br>
+    <br>
     </div>
     <!--offCanvas account settings-->
     <div class="offcanvas offcanvas-end" tabindex="-1" id="sidebarAccSettings" aria-labelledby="sidebar-label">
@@ -272,7 +287,7 @@
         <div class="offcanvas-body">
             <div id="register">
                 <form action="#" method="post">
-                @csrf
+                    @csrf
                     <h4 class="text mt-3">Información básica</h4>
                     <div class="container">
                         <!--name-->
