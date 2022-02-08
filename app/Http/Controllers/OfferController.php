@@ -30,14 +30,9 @@ class OfferController extends Controller
          'foto1' => 'required',
          'foto2' => 'required',
          'foto3' => 'required',
+         'latitud' => 'required',
+         'longitud' => 'required',
         ]);
-        /*
-        $address = 'Google HQ'; // Google HQ
-        $prepAddr = str_replace(' ','+',$address);
-        $geocode=file_get_contents('https://maps.google.com/maps/api/geocode/json?address='.$prepAddr.'&sensor=false&key=AIzaSyAYvLNR666y22LmyCPbGU8Ws1OuuXfdplY');
-        $output= json_decode($geocode);
-        $latitude = $output->results[0]->geometry->location->lat;
-        $longitude = $output->results[0]->geometry->location->lng;*/
 
         date_default_timezone_set('America/New_York');
         $publishDate = date_create()->format('Y-m-d');
@@ -66,6 +61,8 @@ class OfferController extends Controller
             'type' => $request->get('tipo'),
             'parking' => $request->get('parqueadero'),
             'value' => $request->input('valor'),
+            'latitude' => $request->input('latitud'),
+            'longitude' => $request->input('longitud'),
             'publishDate' => $publishDate,
             'created_at' => $created_at,
             //'User_idUser' => auth()->user()->id,
@@ -127,6 +124,8 @@ class OfferController extends Controller
                 'foto1' => 'required',
                 'foto2' => 'required',
                 'foto3' => 'required',
+                'latitud' => 'required',
+                'longitud' => 'required',
                ]);
                session_start();
                $offer_id = session('offer_id');
@@ -145,6 +144,8 @@ class OfferController extends Controller
                 'type' => $request->get('tipo'),
                 'parking' => $request->get('parqueadero'),
                 'value' => $request->input('valor'),
+                'latitude' => $request->input('latitud'),
+                'longitude' => $request->input('longitud'),
                 'updated_at' => $updated_at,
                ]);
                $estates = DB::connection('mysql2')->table('estates')->where('id','=',$offer_id)->get();
