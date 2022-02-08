@@ -38,19 +38,18 @@
                     </li>
                 </ul>
                 <div class="navbar-nav d-flex usuario">
-                        <ul>
-                            <li><a class="d-block mt-3" id="userName" aria-controls="sidebar">Nombre de usuario</a></li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Cuenta</a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#sidebarAccSettings" class="dropdown-item d-block text-dark" data-bs-toggle="offcanvas" role="button"
-                                            aria-controls="sidebar">Ajustes de cuenta</a></li>
-                                    <li><a class="dropdown-item text-dark" href="{{ route('index') }}">Cerrar sesión</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <img src="../imagenes/usuario.png" />
-                    </div>
+                    <ul>
+                        <li><a class="d-block mt-3" id="userName" aria-controls="sidebar">Nombre de usuario</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Cuenta</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#sidebarAccSettings" class="dropdown-item d-block text-dark" data-bs-toggle="offcanvas" role="button" aria-controls="sidebar">Ajustes de cuenta</a></li>
+                                <li><a class="dropdown-item text-dark" href="{{ route('index') }}">Cerrar sesión</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <img src="../imagenes/usuario.png" />
+                </div>
             </div>
         </div>
     </nav>
@@ -71,139 +70,187 @@
             <div class="content">
 
 
-                <form action="{!! route('create-offer')!!}" method="POST" >
+                <form action="{!! route('create-offer')!!}" method="POST">
                     @csrf
-                    <div class="row">
+                    <div class="row" style="width:700px">
                         <div class="col">
 
-
-
-
-                            <label for="nombre" class="form-label">Nombre</label>
+                            <label for="direccion" class="form-label">Dirección</label>
                             <div class="fieldbox">
-                                <!-- <span class="material-icons">mail</span> -->
-                                <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Se vende apartamento en Bogotá..."  value="{{ old('nombre')}}">
-                                {!! $errors ->first('nombre', '<small style="color:red">:message</small><br>') !!}
-                                <div id="nombreHelp" class="form-text">Ingresa el nombre tu anuncio. </div>
-                            </div>
-                            <br>
-                            <label for="direccion" class="form-label">Direccion</label>
-                            <div class="fieldbox">
-                                <!-- <span class="material-icons">mail</span> -->
-                                <input type="text" class="form-control" name="direccion" id="direccion" placeholder="carrera 43a..."  value="{{ old('direccion')}}" >
-                                {!! $errors ->first('direccion', '<small style="color:red">:message</small><br>') !!}
-                                <div id="nombreHelp" class="form-text">Ingresa la direccion de tu inmueble.</div>
+                                <input type="text" class="form-control" name="dirección" id="dirección" placeholder="Avenida Calle 53" value="{{ old('dirección')}}">
+                                {!! $errors ->first('dirección', '<small style="color:red">:message</small><br>') !!}
+                                <div id="direcciónHelp" class="form-text">Ingresa la dirección de tu inmueble.</div>
                             </div>
                             <br>
 
-                            <label for="area" class="form-label">Area</label>
+                            <label for="localidad" class="form-label">Localidad</label>
                             <div class="fieldbox">
-                                <!-- <span class="material-icons">mail</span> -->
-                                <input type="number" class="form-control" name="area" id="area" placeholder="70.00"  value="{{ old('area')}}" >
-                                {!! $errors ->first('area', '<small style="color:red">:message</small><br>') !!}
-                                <div id="nombreHelp" class="form-text">Ingresa el area en metros cuadrados.</div>
+                                <input type="text" class="form-control" name="localidad" id="localidad" placeholder="Teusaquillo" value="{{ old('localidad')}}">
+                                {!! $errors ->first('localidad', '<small style="color:red">:message</small><br>') !!}
+                                <div id="localidadHelp" class="form-text">Ingresa la localidad.</div>
                             </div>
-                            <br>
-                            
-                            <label for="barrio" class="form-label">Barrio</label>
-                            <div class="fieldbox">
-                                <!-- <span class="material-icons">account_circle</span> -->
-                                <input type="text" class="form-control" name="barrio" id="barrio" placeholder="San Antonio"  value="{{ old('barrio')}}" >
-                                {!! $errors ->first('barrio', '<small style="color:red">:message</small><br>') !!}
-                                <div id="nombreHelp" class="form-text">Ingresa el barrio</div>
-                            </div>
-
                             <br>
 
                             <label for="estrato" class="form-label">Estrato</label>
                             <div class="fieldbox">
-                                <!-- <span class="material-icons">account_circle</span> -->
-                                <input type="number" class="form-control" name="estrato" id="estrato" placeholder="3"  value="{{ old('estrato')}}" >
+                                <input type="number" class="form-control" name="estrato" id="estrato" placeholder="3" value="{{ old('estrato')}}">
                                 {!! $errors ->first('estrato', '<small style="color:red">:message</small><br>') !!}
-                                <div id="nombreHelp" class="form-text">Ingresa el estrato</div>
+                                <div id="estratoHelp" class="form-text">Ingresa el estrato.</div>
                             </div>
 
+                            <br>
+
+                            <label for="pisos" class="form-label">Pisos</label>
+                            <div class="fieldbox">
+                                <input type="number" class="form-control" name="pisos" id="pisos" placeholder="2" value="{{ old('pisos')}}">
+                                {!! $errors ->first('pisos', '<small style="color:red">:message</small><br>') !!}
+                                <div id="pisosHelp" class="form-text">Ingresa el número de pisos.</div>
+                            </div>
+
+                            <br>
+
+                            <label for="baños" class="form-label">Baños</label>
+                            <div class="fieldbox">
+                                <input type="number" class="form-control" name="baños" id="baños" placeholder="1" value="{{ old('baños')}}">
+                                {!! $errors ->first('baños', '<small style="color:red">:message</small><br>') !!}
+                                <div id="bañosHelp" class="form-text">Ingresa el número de baños.</div>
+                            </div>
+
+                            <br>
+
+                            <label for="parqueadero" class="form-label">Parqueadero</label>
+                            <select name="parqueadero" id="parqueadero" class="form-select" aria-label="Default select example" value="{{ old('parqueadero')}}">
+                                {!! $errors ->first('parqueadero', '<small style="color:red">:message</small><br>') !!}
+                                <option value="0">No</option>
+                                <option value="1">Si</option>
+                            </select>
+                            <div id="parqueaderoHelp" class="form-text">Ingresa si el inmueble tiene o no parqueadero.</div>
+                            <br>
+
+                            <label for="sótano" class="form-label">Sótano</label>
+                            <select name="sótano" id="sótano" class="form-select" aria-label="Default select example" value="{{ old('sótano')}}">
+                                {!! $errors ->first('sótano', '<small style="color:red">:message</small><br>') !!}
+                                <option value="0">No</option>
+                                <option value="1">Si</option>
+                            </select>
+                            <div id="sótanoHelp" class="form-text">Ingresa si el inmueble tiene o no sótano.</div>
+                            <br>
+
+                            <label for="seguridad" class="form-label">Seguridad</label>
+                            <select name="seguridad" id="sótano" class="form-select" aria-label="Default select example" value="{{ old('seguridad')}}">
+                                {!! $errors ->first('seguridad', '<small style="color:red">:message</small><br>') !!}
+                                <option value="0">No</option>
+                                <option value="1">Si</option>
+                            </select>
+                            <div id="seguridadHelp" class="form-text">Ingresa si el inmueble tiene o no seguridad.</div>
                             <br>
 
                         </div>
                         <div class="col">
 
+                            <label for="ciudad" class="form-label">Ciudad</label>
+                            <div class="fieldbox">
+                                <input type="text" class="form-control" name="ciudad" id="ciudad" placeholder="Bogotá" value="{{ old('ciudad')}}">
+                                {!! $errors ->first('ciudad', '<small style="color:red">:message</small><br>') !!}
+                                <div id="ciudadHelp" class="form-text">Ingresa la ciudad.</div>
+                            </div>
+
+                            <br>
+
+                            <label for="barrio" class="form-label">Barrio</label>
+                            <div class="fieldbox">
+                                <input type="text" class="form-control" name="barrio" id="barrio" placeholder="Galerías" value="{{ old('barrio')}}">
+                                {!! $errors ->first('barrio', '<small style="color:red">:message</small><br>') !!}
+                                <div id="barrioHelp" class="form-text">Ingresa el barrio.</div>
+                            </div>
+                            <br>
+
+                            <label for="área" class="form-label">Área</label>
+                            <div class="fieldbox">
+                                <input type="number" class="form-control" name="área" id="área" placeholder="70" value="{{ old('área')}}">
+                                {!! $errors ->first('área', '<small style="color:red">:message</small><br>') !!}
+                                <div id="áreaHelp" class="form-text">Ingresa el área en metros cuadrados.</div>
+                            </div>
+
+                            <br>
 
                             <label for="habitaciones" class="form-label">Habitaciones</label>
                             <div class="fieldbox">
-                                <!-- <span class="material-icons">phone</span> -->
-                                <input type="number" class="form-control" name="habitaciones" id="habitaciones" placeholder="3"  value="{{ old('habitaciones')}}" >
+                                <input type="number" class="form-control" name="habitaciones" id="habitaciones" placeholder="3" value="{{ old('habitaciones')}}">
                                 {!! $errors ->first('habitaciones', '<small style="color:red">:message</small><br>') !!}
-                                <div id="nombreHelp" class="form-text">Ingresa el numero de habitaciones</div>
+                                <div id="habitacionesHelp" class="form-text">Ingresa el número de habitaciones.</div>
                             </div>
 
                             <br>
+                            <label for="tipo" class="form-label">Tipo</label>
 
-
-                            <label for="banos" class="form-label">Baños</label>
-                            <div class="fieldbox">
-                                <!-- <span class="material-icons">account_circle</span> -->
-                                <input type="number" class="form-control" name="baños"id="baños" placeholder="Ingrese el numero de baños" value="{{ old('baños')}}" >
-                                {!! $errors ->first('baños', '<small style="color:red">:message</small><br>') !!}
-                                <div id="nombreHelp" class="form-text">Ingresa el numero de baños</div>
-                            </div>
-
+                            <select name="tipo" id="tipo" class="form-select" aria-label="Default select example" value="{{ old('tipo')}}">
+                                {!! $errors ->first('tipo', '<small style="color:red">:message</small><br>') !!}
+                                <option value="0">Casa</option>
+                                <option value="1">Apartamento</option>
+                            </select>
+                            <div id="tipoHelp" class="form-text">Ingresa si el inmueble es casa o apartamento.</div>
                             <br>
 
-
-                            <label for="garajes" class="form-label">Garajes</label>
-                            <div class="fieldbox">
-                                <!-- <span class="material-icons">account_circle</span> -->
-                                <input type="number" class="form-control" name="garajes" id="garajes" placeholder="0"  value="{{ old('garajes')}}" >
-                                {!! $errors ->first('garajes', '<small style="color:red">:message</small><br>') !!}
-                                <div id="nombreHelp" class="form-text">Ingresa el numero de garajes</div>
-                            </div>
-
+                            <label for="amueblado" class="form-label">Amueblado</label>
+                            <select name="amueblado" id="amueblado" class="form-select" aria-label="Default select example" value="{{ old('amueblado')}}">
+                                {!! $errors ->first('amueblado', '<small style="color:red">:message</small><br>') !!}
+                                <option value="0">No</option>
+                                <option value="1">Si</option>
+                            </select>
+                            <div id="amuebladoHelp" class="form-text">Ingresa si el inmueble está o no amueblado.</div>
                             <br>
 
+                            <label for="terraza" class="form-label">Terraza</label>
+                            <select name="terraza" id="terraza" class="form-select" aria-label="Default select example" value="{{ old('terraza')}}">
+                                {!! $errors ->first('terraza', '<small style="color:red">:message</small><br>') !!}
+                                <option value="0">No</option>
+                                <option value="1">Si</option>
+                            </select>
+                            <div id="terrazaHelp" class="form-text">Ingresa si el inmueble tiene o no terraza.</div>
+                            <br>
 
-                            <label for="precio" class="form-label">Precio</label>
-                            <div class="fieldbox input-group mb-2">
+                            <label for="valor" class="form-label">Valor</label>
+                            <div class="fieldbox input-group">
                                 <span class="input-group-text">$</span>
-                                <input type="number" class="form-control" name="precio" id="precio" placeholder="1.800.000"  value="{{ old('precio')}}" >
-                                {!! $errors ->first('precio', '<small style="color:red">:message</small><br>') !!}
+                                <input type="number" class="form-control" name="valor" id="valor" placeholder="1.800.000" value="{{ old('valor')}}"> 
                             </div>
-                            <div id="nombreHelp" class="form-text">Ingresa el precio, si el contrato es de arriendo, ingrese la renta mensual.</div>
+                            {!! $errors ->first('valor', '<small style="color:red">:message</small><br>') !!}
+                            <div id="valorHelp" class="form-text">Ingresa el valor de tu inmueble.</div>
+
+                            <br>
+
                         </div>
-                        <br>
+
                     </div>
-                    <label  for="tipo" class="form-label">Tipo</label>
-                    
-                    <select name="tipo" id ="tipo" class="form-select" aria-label="Default select example" value="{{ old('tipo')}}" >
-                    {!! $errors ->first('tipo', '<small style="color:red">:message</small><br>') !!}
-                        <option value="1">Arriendo</option>
-                        <option value="2">Venta</option>
-                      </select>
-                    
-                    
+
+
+                    <div class="row">
+
+                    <label for="fotos" class="form-label">Fotos</label>
+                            <div class="fieldbox">
+                                <input type="text" class="form-control" name="foto1" id="foto1" placeholder="URL 1" value="{{ old('foto1')}}">
+                                {!! $errors ->first('foto1', '<small style="color:red">:message</small><br>') !!}
+                                <div id="foto1Help" class="form-text">Ingresa la URL de la primera foto.</div>
+                            </div>
+                            <br>
+                            <div class="fieldbox mt-3">
+                                <input type="text" class="form-control" name="foto2" id="foto2" placeholder="URL 2" value="{{ old('foto2')}}">
+                                {!! $errors ->first('foto2', '<small style="color:red">:message</small><br>') !!}
+                                <div id="foto2Help" class="form-text">Ingresa la URL de la segunda foto.</div>
+                            </div>
+                            <br>
+                            <div class="fieldbox mt-3">
+                                <input type="text" class="form-control" name="foto3" id="foto3" placeholder="URL 3" value="{{ old('foto3')}}">
+                                {!! $errors ->first('foto3', '<small style="color:red">:message</small><br>') !!}
+                                <div id="foto3Help" class="form-text">Ingresa la URL de la tercera foto.</div>
+                            </div>
+                            <br>
+                    </div>
 
                     <br>
 
-                    <div class="col-7">
-
-
-                        <label for="foto" class="form-label">Foto</label>
-                        <div class="fieldbox">
-                            <!-- <span class="material-icons">account_circle</span> -->
-                            <input type="file" class="form-control" name="foto" id="foto" size="48" maxlength="25" placeholder="Ingrese una foto"  value="{{ old('foto')}}" >
-                            {!! $errors ->first('foto', '<small style="color:red">:message</small><br>') !!}
-                        </div>
-                    </div>
-
-                    <br>
-
-                    
-
-                    
-                   
-                        <button class="btn btn-primary boton" type="submit"   id="publicar" role="button">Publicar</button>
-                        <!-- agregar submit con backend -->
-                        <!-- <input class="btn btn-primary boton" id="publicar" type="button" value="Publicar"> -->
+                    <button class="btn btn-primary boton" type="submit" id="publicar" role="button">Publicar</button>
 
                 </form>
 
@@ -216,16 +263,16 @@
         <br>
         <br>
     </div>
-     <!--offCanvas account settings-->
-     <div class="offcanvas offcanvas-end" tabindex="-1" id="sidebarAccSettings"
-    aria-labelledby="sidebar-label">
+    <!--offCanvas account settings-->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="sidebarAccSettings" aria-labelledby="sidebar-label">
         <div class="offcanvas-header">
             <h2 class="text-center mt-3">Ajustes de cuenta</h2>
             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
             <div id="register">
-                <form action="index.html" method="post">
+                <form action="#" method="post">
+                @csrf
                     <h4 class="text mt-3">Información básica</h4>
                     <div class="container">
                         <!--name-->
@@ -244,7 +291,7 @@
                             </div>
                             <button class="btn btn-primary col-sm-3" type="button">Cambiar</button>
                         </div>
-                        
+
                     </div>
                     <h4 class="text mt-3">Información de contacto</h4>
                     <div class="container">
@@ -268,15 +315,14 @@
                     <div class="text-center mb-3">
                         <button type="submit" class="btn btn-primary">Cambiar contraseña</button>
                     </div>
-                    
+
                 </form>
             </div>
         </div>
-        
+
     </div>
     <!-- Modal change name / suername-->
-    <div class="modal fade" id="modalChangeName" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="modalChangeName" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
