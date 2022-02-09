@@ -11,7 +11,7 @@ class Property{
     }
 
     loadInfo(jsonStr) {
-        const obj = JSON.parse(jsonStr)[0];
+        const obj = JSON.parse(jsonStr);
         //console.log(obj)
         // TODO actualizar los atributos con la info del Json
         /* Load the info of the house 
