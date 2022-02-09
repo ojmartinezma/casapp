@@ -432,6 +432,10 @@
         </div>
     </div>
 
+        <!--markercluster library-->
+        <script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"></script>
+    <!------------------------------------------------->
+
 
     <script src="js/acciones.js"></script>
     <script src="js/filters.js" ></script>

@@ -10,5 +10,6 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <a class="nav-link" href="{{ route('index') }}" title="Inicio">Inicio</a>
         </div>
+        <script>window.location = "/";</script>
     </div>
 </x-app-layout>
