@@ -22,7 +22,7 @@ class MapController extends Controller
 
     public function detail($id){
         //
-        $marker=Estate::where('id',$id)->with('user')->with('feature')->get();
+        $marker=Estate::where('id',$id)->with('user')->with('feature')->first();
         return json_encode($marker);
     }
 }
