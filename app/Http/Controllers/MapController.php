@@ -14,7 +14,7 @@ class MapController extends Controller
         return json_encode($marker);
     }
 
-    public function filter($json){
+    public function filter($data){
         //
         $marker=Estate::select('id','latitude','longitude')->whereIn('id',[1,3,5])->get();
         return json_encode($marker);

@@ -23,7 +23,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::get('/map','App\Http\Controllers\MapController@api')->name('map');
-Route::get('/map/filter/{json}','App\Http\Controllers\MapController@filter')->name('filter');
+Route::get('/map/filter/{data}','App\Http\Controllers\MapController@filter')->name('filter');
+Route::get('/map/filter','App\Http\Controllers\MapController@filter')->name('filter3');
 Route::post('/map/filter','App\Http\Controllers\MapController@filter')->name('filterpost');
 Route::get('/map/detail/{id}','App\Http\Controllers\MapController@detail')->name('detail');
 
