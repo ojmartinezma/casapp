@@ -61,7 +61,7 @@
         session_start();
         $offer_id = session('offer_id');
 
-        $estate = DB::connection('mysql2')->table('estates')->where('id', '=', $offer_id)->get();
+        $estate = DB::connection()->table('estates')->where('id', '=', $offer_id)->get();
         $city;
         $neighborhood;
         $area;
@@ -70,7 +70,6 @@
         $value;
         $latitude;
         $longitude;
-        $Features_id;
         $Estates_id;
         if (!($estate->isEmpty())) {
             foreach ($estate as $estate) {
@@ -82,7 +81,6 @@
                 $value = $estate->value;
                 $latitude = $estate->latitude;
                 $longitude = $estate->longitude;
-                $Features_id = $estate->Features_id;
                 $Estates_id = $estate->id;
         ?>
                 <h1 class="titulo display-5 d-flex justify-content-start">Editar anuncio</h1>
@@ -153,7 +151,7 @@
                                     <br>
                                     <?php
                                 }
-                                $features = DB::connection('mysql2')->table('features')->where('id', '=', $Features_id)->get();
+                                $features = DB::connection()->table('features')->where('estate_id', '=', $estate->id)->get();
                                 if (!($features->isEmpty())) {
                                     foreach ($features as $feature) {
                                     ?>
@@ -255,12 +253,12 @@
                         <?php
                                     }
                                 }
-                                $images = DB::connection('mysql2')->table('images')->where('Estates_id', '=', $Estates_id)->get();
+                                $images = DB::connection()->table('images')->where('estate_id', '=', $Estates_id)->get();
                                 if (!($images->isEmpty())) {
                                     $fotos = array();
                                     $i = 1;
                                     foreach ($images as $image) {
-                                        array_push($fotos, $image->source);
+                                        array_push($fotos, $image->url);
                                     }
 
                         ?>
