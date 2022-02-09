@@ -27,19 +27,19 @@ Route::get('/map/filter','App\Http\Controllers\MapController@filter')->name('fil
 Route::get('/map/detail/{id}','App\Http\Controllers\MapController@detail')->name('detail');
 
 
-Route::get('/create-offer', function () {
+Route::middleware(['auth:sanctum', 'verified'])->get('/create-offer', function () {
     return view('create-offer');
 })->name('create-offer');
 
-Route::get('/edit-offer', function () {
+Route::middleware(['auth:sanctum', 'verified'])->get('/edit-offer', function () {
     return view('edit-offer');
 })->name('edit-offer');
 
-Route::post('create-offer',  'App\Http\Controllers\OfferController@create');
-Route::post('edit-offer',  'App\Http\Controllers\OfferController@edit');
-Route::post('modify-offer',  'App\Http\Controllers\OfferController@modify');
+Route::middleware(['auth:sanctum', 'verified'])->post('create-offer',  'App\Http\Controllers\OfferController@create');
+Route::middleware(['auth:sanctum', 'verified'])->post('edit-offer',  'App\Http\Controllers\OfferController@edit');
+Route::middleware(['auth:sanctum', 'verified'])->post('modify-offer',  'App\Http\Controllers\OfferController@modify');
 
-Route::get('/modify-offer', function () {
+Route::middleware(['auth:sanctum', 'verified'])->get('/modify-offer', function () {
     $offer_id = session('offer_id');
     return view('modify-offer');
 })->name('modify-offer');

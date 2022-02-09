@@ -56,8 +56,8 @@
         <?php
 
         use Illuminate\Support\Facades\DB;
-        //$estates = DB::connection('mysql2')->table('estates')->where('User_idUser', '=', auth()->user()->id)->get();
-        $estates = DB::connection('mysql2')->table('estates')->whereNull('User_idUser')->get();
+        //$estates = DB::connection()->table('estates')->where('user_id', '=', auth()->user()->id)->get();
+        $estates = DB::connection()->table('estates')->where('user_id',Auth::user()->id)->get();
         if (!($estates->isEmpty())) {
 
         ?>
