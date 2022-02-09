@@ -24,6 +24,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::get('/map','App\Http\Controllers\MapController@api')->name('map');
 Route::get('/map/filter','App\Http\Controllers\MapController@filter')->name('filter');
+Route::post('/map/filter','App\Http\Controllers\MapController@filter')->name('filter');
 Route::get('/map/detail/{id}','App\Http\Controllers\MapController@detail')->name('detail');
 
 

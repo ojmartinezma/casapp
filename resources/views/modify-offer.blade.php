@@ -17,7 +17,7 @@
     <!-- main top menu-->
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{{ route('index') }}"><img src="../imagenes/icono.png" /></a>
+            <a class="navbar-brand" href="{{ route('index') }}"><img src="imagenes/icono.png" height="32"/></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -36,19 +36,42 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#sidebarContacto" data-bs-toggle="offcanvas" role="button" title="Contactenos" aria-controls="sidebar">Contáctenos</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" title="Filtro"data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
+        aria-controls="offcanvasWithBothOptions">Filtros</a>
+                    </li>
                 </ul>
-                <div class="navbar-nav d-flex usuario">
-                    <ul>
-                        <li><a class="d-block mt-3" id="userName" aria-controls="sidebar">Nombre de usuario</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Cuenta</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#sidebarAccSettings" class="dropdown-item d-block text-dark" data-bs-toggle="offcanvas" role="button" aria-controls="sidebar">Ajustes de cuenta</a></li>
-                                <li><a class="dropdown-item text-dark" href="{{ route('index') }}">Cerrar sesión</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <img src="../imagenes/usuario.png" />
+                <div class="col-md-3 text-end">
+                    <!-- <ul> -->
+                        @if(Auth::check())
+                            <!-- <li><a href="/login" class="nav-link"
+                            role="button">{{ Auth::user()->name }}</a></li> -->
+
+                            
+
+
+
+
+
+                        @else
+                            <a type="button" class="btn btn-outline-light me-2" href="{{ route('login') }}">Ingresar</a>
+                            <a type="button" class="btn btn-primary" href="{{ route('register') }}">Registrarse</a>
+                        <!-- <li><a href="/login" class="nav-link"
+                            role="button">Ingresar</a></li>
+                        
+                        <li><a href="/register" class="nav-link"
+                            role="button">Registrarse</a></li> -->
+                            
+                            <!-- <ul>
+                                <li><a href="#sidebarLogin" class="d-block mt-3" data-bs-toggle="offcanvas" 
+                                    role="button" aria-controls="sidebar">Ingresar</a></li>
+                                
+                                <li><a href="#sidebarRegister" class="d-block mt-3" data-bs-toggle="offcanvas"
+                                    role="button" aria-controls="sidebar">Registrarse</a></li>
+                            </ul> -->
+                        @endif
+                    <!-- </ul> -->
+                    <!-- <img src="imagenes/usuario.png" height="32"/> -->
                 </div>
             </div>
         </div>
