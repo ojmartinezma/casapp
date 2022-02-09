@@ -200,6 +200,275 @@
         </div>
         @endcomponent
 
+            <!--offCanvas Marker-->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="sideBarMarker"
+        aria-labelledby="offcanvasWithBackdropLabel">
+        <div class="offcanvas-header">
+            <h4 class="text mt-3">Información del inmueble</h4>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+
+            <div id="carouselExampleIndicators" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                        class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="imagenes/imagenCasa02.jpg" class="d-block w-100" alt="..." id="img1Marker">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="imagenes/imagenCasa03.jpg" class="d-block w-100" alt="..." id="img2Marker">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="imagenes/imagenCasa04.jpg" class="d-block w-100" alt="..." id="img3Marker">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+            <br>
+        
+            </br>
+
+            <div class="container">
+                <div class="mb-2 row">
+                    <h3 for="neighborMarker"
+                        class="col-sm-4  h3 text-secondary">Precio:
+                    </h3>
+                    <h3 for="neighborMarker"
+                        class="col-sm-8  h3 text-primary " id="mainPrice">$100'000.000
+                    </h3>
+                </div>
+                <div class="mb-2 row">
+                    <h3 for="neighborMarker"
+                        class="col-sm-4  h4 text-secondary">Tipo:
+                    </h3>
+                    <h3 for="neighborMarker"
+                        class="col-sm-8  h4" id="mainType">Apartamento
+                    </h3>
+                </div>
+                <div class="mb-2 row">
+                    <h3 for="neighborMarker"
+                        class="col-sm-4  h4 text-secondary" >Area:
+                    </h3>
+                    <h3 for="neighborMarker"
+                        class="col-sm-8  h4" id="mainArea">50 m²
+                    </h3>
+                </div>
+                <div class="mb-2 row">
+                    <h3 for="neighborMarker"
+                        class="col-sm-4  h4 text-secondary text-wrap">Ubicación:
+                    </h3>
+                    <h3 for="neighborMarker"
+                        class="col-sm-8  h4 text-wrap" id="mainUbication">C 28, Ac. 3 #71, Bogotá
+                    </h3>
+                </div>
+                
+
+            </div>
+            <br>
+        
+            </br>
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            Ubicación
+                        </button>
+                    </h2>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne">
+                        <div class="accordion-body">
+                            <div class="container">
+                                <!--ciudad-->
+                                <div class="mb-2 row">
+                                    <label for="cityMarker" class="col-sm-3 col-form-label h3 fw-bold">Ciudad:</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" readonly class="form-control-plaintext" id="cityMarker"
+                                            value="Ciudad del Inmueble asdfasdfasdf asdfasdfasdf">
+                                    </div>
+                                </div>
+                                <!--localidad-->
+                                <div class="mb-2 row">
+                                    <label for="LocalMarker"
+                                        class="col-sm-3 col-form-label h3 fw-bold">Localidad:</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" readonly class="form-control-plaintext" id="localMarker"
+                                            value="Localidad del Inmueble">
+                                    </div>
+                                </div>
+                                <!--barrio-->
+                                <div class="mb-2 row">
+                                    <label for="neighborMarker"
+                                        class="col-sm-3 col-form-label h3 fw-bold">Barrio:</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" readonly class="form-control-plaintext" id="neighborMarker"
+                                            value="Barrio del Inmueble">
+                                    </div>
+                                </div>
+                                <!--dirección-->
+                                <div class="mb-2 row">
+                                    <label for="dirMarker" class="col-sm-3 col-form-label h3 fw-bold">Dirección:</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" readonly class="form-control-plaintext" id="dirMarker"
+                                            value="Dirección del inmueble">
+                                    </div>
+                                </div>
+                                <!--estrato-->
+                                <div class="mb-2 row">
+                                    <label for="estrMarker" class="col-sm-3 col-form-label h3 fw-bold">Estrato:</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" readonly class="form-control-plaintext" id="estrMarker"
+                                            value="Estrato del inmueble">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                            Características
+                        </button>
+                    </h2>
+                    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo">
+                        <div class="accordion-body">
+                            <div class="container">
+                                <!--area-->
+                                <div class="mb-2 row">
+                                    <label for="areaMarker" class="col-sm-4 col-form-label h3 fw-bold">Área:</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" readonly class="form-control-plaintext" id="areaMarker"
+                                            value="Área del inmueble">
+                                    </div>
+                                </div>
+                                <!--rooms-->
+                                <div class="mb-2 row">
+                                    <label for="roomsMarker"
+                                        class="col-sm-4 col-form-label h3 fw-bold">Habitaciones:</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" readonly class="form-control-plaintext" id="roomsMarker"
+                                            value="Habitaciones del inmueble">
+                                    </div>
+                                </div>
+                                <!--bethrooms-->
+                                <div class="mb-2 row">
+                                    <label for="bathroomMarker"
+                                        class="col-sm-4 col-form-label h3 fw-bold">Baños:</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" readonly class="form-control-plaintext" id="bathroomMarker"
+                                            value="Número de baños del inmueble">
+                                    </div>
+                                </div>
+                                <!--floors-->
+                                <div class="mb-2 row">
+                                    <label for="floorsMarker"
+                                        class="col-sm-4 col-form-label h3 fw-bold">Plantas:</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" readonly class="form-control-plaintext" id="floorsMarker"
+                                            value="Número de plantas del inmueble">
+                                    </div>
+                                </div>
+                                <!--parking-->
+                                <div class="mb-2 row">
+                                    <label for="parkingMarker"
+                                        class="col-sm-4 col-form-label h3 fw-bold">Parqueadero:</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" readonly class="form-control-plaintext" id="parkingMarker"
+                                            value="¿Tiene parqueadero?">
+                                    </div>
+                                </div>
+                                <!--features-->
+                                <div class="mb-2 row">
+                                    <label for="featuresMarker"
+                                        class="col-sm-7 col-form-label h4 fw-bold">Otras características:</label>
+                                    <ul class="list-group list-group-flush" id="featuresMarker">
+                                        <li class="list-group-item">Piscina</li>
+                                        <li class="list-group-item">Parrilla</li>
+                                        <li class="list-group-item">Amueblado</li>
+                                        <li class="list-group-item">Jardín</li>
+                                        <li class="list-group-item">Fuente</li>
+                                      </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseThree" aria-expanded="false"
+                            aria-controls="flush-collapseThree">
+                            Precio y contacto
+                        </button>
+                    </h2>
+                    <div id="flush-collapseThree" class="accordion-collapse collapse"
+                        aria-labelledby="flush-headingThree">
+                        <div class="accordion-body">
+                            <div class="container">
+                                <!--precio-->
+                                <div class="mb-2 row">
+                                    <label for="priceMarker" class="col-sm-3 col-form-label h3 fw-bold">Precio:</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" readonly class="form-control-plaintext" id="priceMarker"
+                                            value="Precio inmueble">
+                                    </div>
+                                </div>
+                                <!--usuario-->
+                                <div class="mb-2 row">
+                                    <label for="userMarker" class="col-sm-3 col-form-label h3 fw-bold">Usuario:</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" readonly class="form-control-plaintext" id="userMarker"
+                                            value="Usuario contacto">
+                                    </div>
+                                </div>
+                                <!--celular-->
+                                <div class="mb-2 row">
+                                    <label for="celMarker" class="col-sm-3 col-form-label h3 fw-bold">Celular:</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" readonly class="form-control-plaintext" id="celMarker"
+                                            value="Celular de contacto">
+                                    </div>
+                                </div>
+                                <!--correo-->
+                                <div class="mb-2 row">
+                                    <label for="emailMarker" class="col-sm-3 col-form-label h3 fw-bold">email:</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" readonly class="form-control-plaintext" id="emailMarker"
+                                            value="correo de contacto">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+            
+        </div>
+    </div>
+	
+	
+
 
         <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
         aria-labelledby="offcanvasWithBothOptionsLabel">
@@ -429,6 +698,8 @@
             </div>
         </div>
     </div>
+
+    
 
         <!--markercluster library-->
         <script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"></script>
