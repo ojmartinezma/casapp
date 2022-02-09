@@ -40,8 +40,19 @@
                 <div class="col-md-3 text-end">
                     <!-- <ul> -->
                         @if(Auth::check())
-                            <!-- <li><a href="/login" class="nav-link"
-                            role="button">{{ Auth::user()->name }}</a></li> -->
+                            <li><a href="/login" class="btn btn-outline-light me-2"
+                            role="button">{{ Auth::user()->name }}</a></li>
+
+                                            <!-- Authentication -->
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+
+                                <a href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                this.closest('form').submit();" class="btn btn-primary">
+                                    {{ __('Log Out') }}
+                            </a>
+                            </form>
 
                             
 
@@ -149,7 +160,6 @@
         </div>
         
     </div>
-        offCanvas contacto
         @component('components/offcanvas')
         <div class="offcanvas offcanvas-end" tabindex="-1" id="sidebarContacto"  aria-labelledby="sidebar-label">
             <div class="offcanvas-header">
