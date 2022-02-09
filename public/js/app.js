@@ -172,7 +172,7 @@ async function doFilter(filt){
     updateFilter(filt);
     removeMarkers();
     //console.log("http://kasapp-elgrupitodeatras.herokuapp.com/map/filter")
-    makeRequest('http://kasapp-elgrupitodeatras.herokuapp.com/map/filter/'+ filt.toJson(), 1);
+    makeRequest('http://kasapp-elgrupitodeatras.herokuapp.com/map/filter/'+ filt.toJson(),null, 1);
     console.log('http://kasapp-elgrupitodeatras.herokuapp.com/map/filter/'+ filt.toJson())
 }
 
