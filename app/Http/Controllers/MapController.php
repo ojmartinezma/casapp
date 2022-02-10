@@ -16,6 +16,19 @@ class MapController extends Controller
 
     public function filter($data){
         //
+        $dato = json_decode($data);
+        //$marker=Estate::select('id','latitude','longitude')->whereIn('id',[1,3,5])->get();
+        $marker=Estate::select('id','latitude','longitude');
+        return $data;
+        if($dato->type->value!=-1){
+            $marker->where('type',$dato->type->value);
+        }
+        if($dato->price->value!=-1){
+            $marker->where('price',$dato->price->value);
+        }
+        if($dato->area->value!=-1){
+            $marker->whereBetween('area',$dato->area->value);
+        }
         $marker=Estate::select('id','latitude','longitude')->whereIn('id',[1,3,5])->get();
         return json_encode($marker);
     }
