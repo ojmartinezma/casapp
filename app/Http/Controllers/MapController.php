@@ -19,7 +19,7 @@ class MapController extends Controller
         $dato = json_decode($data);
         //$marker=Estate::select('id','latitude','longitude')->whereIn('id',[1,3,5])->get();
         $marker=Estate::select('id','latitude','longitude');
-        return $data;
+        //return $data;
         if($dato->type->value!=-1){
             $marker->where('type',$dato->type->value);
         }
@@ -27,10 +27,16 @@ class MapController extends Controller
             $marker->where('price',$dato->price->value);
         }
         if($dato->area->value!=-1){
-            $marker->whereBetween('area',$dato->area->value);
+            $marker->whereBetween('area',$dato->area->value,$dato->area->value);
         }
-        $marker=Estate::select('id','latitude','longitude')->whereIn('id',[1,3,5])->get();
-        return json_encode($marker);
+        if($dato->est->value!=-1){
+            $marker->where('est',$dato->est->value);
+        }
+        if($dato->floors->value!=-1){
+            $marker->where('floors',$dato->floors->value);
+        }
+        //$marker=Estate::select('id','latitude','longitude')->whereIn('id',[1,3,5])->get();
+        return json_encode($marker->get());
     }
 
     public function detail($id){
