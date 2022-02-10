@@ -146,6 +146,7 @@ function updateAllMarkers(mark, url,type) {
             markersApp = jsonToMarkers(ans)
             console.log(markersApp)
             if(type == 1){
+                removeMarkers()
                 printMarkers()
             }
             
